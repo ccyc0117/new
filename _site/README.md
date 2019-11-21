@@ -1,40 +1,30 @@
-# i love you 3000遍
-
-# git push -u origin master  //-u 将origin设置为默认的远程仓库，下次再push的时候就可以不用加 origin 了
-
-# http状态码
-- 200  ok
-- 404 没找到
-- 403 没权限
-- 500 服务器错误
-- 301 永久重定向
-- 302 临时重定向
-
-
-
-### 扩展：
-> 标题、列表、代码段、引用、粗体、斜体、图片、链接
-
-
-### markdown预览快捷键绑定
+# 输出
+用 `{{}}` 进行输出，如：
 ```
-//首选项 -> 按键绑定-用户
-{ "keys": ["alt+m"], "command": "markdown_preview", "args": {"target": "browser", "parser":"markdown"} },
+{{ age }}
+{{ page.hehe }}
+{{ '么么哒' }}
 ```
 
+# 过滤器
+对输出内容进行过滤。
+## 格式
+```
+{{page.zhaiyao | truncate:5}}
+```
 
-# jekyll的安装
-1. 先安装 ruby，为了得到gem包管理工具
-```
-//查看是否安装成功，在cmd运行以下命令：
-> gem -v
-3.0.3
-```
-2. 开始安装jekyll
-```
-> gem install jekyll  //等着就行了
+## 常见的过滤器
+- truncate - 截取指定长度的字符串，第2个参数追加到字符串的尾部  {{ 'foobarfoobar' | truncate: 5, '.' }} # => 'foob.'
+- strip_html - 删除 HTML 标签  {{ '<a href="">123</a>' | strip_html }} => 123
+- 请参考： http://ju.outofmemory.cn/entry/149459
+- 百度： jekyll语法 -> 第一条
 
-//查看是否安装成功
-> jekyll -v
-jekyll 4.0.0
-```
+# 全局变量
+- page 代表当前页面，可以获取当前页面中定义的数据
+- site 用于获取 `_config.yml` 配置文件中的数据
+- content 用在模板文件中，代表子节点的内容
+- paginator 获取分页的内容
+
+
+# 目录结构
+- _config.yml 文件，配置文件，在这个文件中配置的内容可以通过`site`全局变量获取
