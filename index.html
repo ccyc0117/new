@@ -5,12 +5,14 @@ zhaiyao: 1234567890
 
 
 ---
-
+{{page.name}}
 <h1>hello {{page.n}}</h1>
-<h1>{{'<a href="">aib</a>'}}</h1>
-<h1>{{'<a href="">aib</a>' | strip_html}}</h1>
-<h1>文章标题： {{page.title}}</h1>
+<h1>{{ '<a href="">aib</a>' }}</h1>
+<h1>{{ '<a href="">aib</a>' | strip_html }}</h1>
+<h1>文章标题： {{ page.title }}</h1>
 <!-- 过滤器 -->
-<h4> {{page.zhaiyao | truncate:6,'*'}}</h4>
+<h4> {{ page.zhaiyao | truncate:6,'*' }}</h4>
 
+<!-- 输出_config.yml中的数据 -->
+<h1>我今年{{site.age}}岁了。。。。</h1>
 {{site：time | date: '%Y-%m-%d %H:%M:%S'}}
